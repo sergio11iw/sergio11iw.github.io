@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Психология - это наука</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: white;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 32px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+        
+        nav ul li a:hover, nav ul li a.active {
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        .search-container {
+            display: flex;
+            align-items: center;
+            background: white;
+            border-radius: 30px;
+            padding: 5px 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            width: 300px;
+        }
+        
+        .search-container:focus-within {
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            width: 350px;
+        }
+        
+        .search-container input {
+            border: none;
+            outline: none;
+            padding: 10px;
+            width: 100%;
+            background: transparent;
+            font-size: 16px;
+        }
+        
+        .search-container button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #3498db;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        
+        .search-container button:hover {
+            color: #2980b9;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(52, 152, 219, 0.8)), url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0;
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 25px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        .hero .author {
+            font-style: italic;
+            font-size: 18px;
+            opacity: 0.8;
+        }
+        
+        .features {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+        
+        .feature {
+            flex: 1;
+            min-width: 250px;
+            margin: 0 15px 30px;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .feature i {
+            font-size: 40px;
+            color: #3498db;
+            margin-bottom: 20px;
+        }
+        
+        .feature h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .feature p {
+            color: #7f8c8d;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: #2c3e50;
+            font-size: 32px;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #3498db;
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        
+        .topics {
+            margin-bottom: 60px;
+        }
+        
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .topic-card {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .topic-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .topic-image {
+            height: 180px;
+            background-color: #3498db;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+        
+        .topic-content {
+            padding: 25px;
+        }
+        
+        .topic-content h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .topic-content p {
+            color: #7f8c8d;
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+        
+        .topic-tag {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 15px;
+            transition: background-color 0.3s, transform 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        .btn-danger {
+            background-color: #e74c3c;
+        }
+        
+        .btn-danger:hover {
+            background-color: #c0392b;
+        }
+        
+        .research {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            margin-bottom: 60px;
+            text-align: center;
+            color: white;
+        }
+        
+        .research h2 {
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+        
+        .research-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .research-stats {
+            font-size: 32px;
+            font-weight: bold;
+            margin-right: 30px;
+            background: rgba(255,255,255,0.2);
+            padding: 15px 25px;
+            border-radius: 10px;
+        }
+        
+        .research-text {
+            font-size: 22px;
+            max-width: 500px;
+        }
+        
+        /* Стили для страницы психоанализа */
+        .breadcrumb {
+            padding: 15px 0;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        
+        .breadcrumb a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        .page-title {
+            font-size: 36px;
+            margin: 20px 0;
+            color: #2c3e50;
+            text-align: center;
+        }
+        
+        .page-subtitle {
+            font-size: 24px;
+            margin-bottom: 40px;
+            color: #3498db;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        .content-section {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .main-content {
+            flex: 2;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .sidebar {
+            flex: 1;
+        }
+        
+        .article-text {
+            margin-bottom: 25px;
+            font-size: 17px;
+            color: #444;
+        }
+        
+        .highlight-box {
+            background: #e8f4fd;
+            border-left: 4px solid #3498db;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .books-section {
+            margin-top: 50px;
+        }
+        
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .book-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .book-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .book-image {
+            height: 200px;
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 50px;
+        }
+        
+        .book-content {
+            padding: 20px;
+        }
+        
+        .book-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .book-author {
+            color: #7f8c8d;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        .book-description {
+            color: #555;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        .book-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+        }
+        
+        .sidebar-widget {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+        
+        .widget-title {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tag {
+            background: #e8f4fd;
+            color: #3498db;
+            padding: 8px 15px;
+            border-radius: 30px;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+        
+        .tag:hover {
+            background: #3498db;
+            color: white;
+            cursor: pointer;
+        }
+        
+        .related-articles {
+            list-style: none;
+        }
+        
+        .related-articles li {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .related-articles li:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .related-articles a {
+            color: #2c3e50;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: block;
+        }
+        
+        .related-articles a:hover {
+            color: #3498db;
+        }
+        
+        .article-date {
+            font-size: 12px;
+            color: #7f8c8d;
+            margin-top: 5px;
+        }
+        
+        /* Стили для админ-панели */
+        .admin-panel {
+            display: none;
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+        }
+        
+        .admin-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #e74c3c;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+        
+        .admin-form {
+            background: white;
+            color: #333;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .admin-form h3 {
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .admin-articles {
+            background: white;
+            color: #333;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .admin-articles h3 {
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .articles-list {
+            list-style: none;
+        }
+        
+        .articles-list li {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .articles-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .article-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        /* Стили для страницы "О проекте" */
+        .about-content {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+        
+        .about-content h2 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        
+        .about-content p {
+            margin-bottom: 15px;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .team-member {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .team-member img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+        
+        .team-member h3 {
+            margin-bottom: 5px;
+            color: #2c3e50;
+        }
+        
+        .team-member p {
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 50px 0 20px;
+            margin-top: 50px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        
+        .footer-logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .footer-links {
+            display: flex;
+            list-style: none;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links li {
+            margin-right: 20px;
+        }
+        
+        .footer-links li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links li a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .social-links li {
+            margin-right: 15px;
+        }
+        
+        .social-links li a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        
+        .social-links li a:hover {
+            background: #3498db;
+        }
+        
+        .copyright {
+            text-align: center;
+            font-size: 14px;
+            color: #bdc3c7;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        /* Стили для страницы статей */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .article-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .article-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .article-image {
+            height: 200px;
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 40px;
+        }
+        
+        .article-content {
+            padding: 25px;
+        }
+        
+        .article-content h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+        }
+        
+        .article-excerpt {
+            color: #555;
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+        
+        @media (max-width: 992px) {
+            .header-content {
+                flex-wrap: wrap;
+            }
+            
+            .search-container {
+                order: 3;
+                width: 100%;
+                margin-top: 15px;
+            }
+            
+            .search-container:focus-within {
+                width: 100%;
+            }
+            
+            .features {
+                flex-direction: column;
+            }
+            
+            .feature {
+                margin: 0 0 20px;
+            }
+            
+            .content-section {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                margin-top: 15px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-links, .social-links {
+                justify-content: center;
+                margin-top: 20px;
+            }
+            
+            .research-content {
+                flex-direction: column;
+            }
+            
+            .research-stats {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            
+            .books-grid, .articles-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo" onclick="showPage('home')">
+                    <i class="fas fa-brain"></i>
+                    Психология
+                </a>
+                
+                <div class="search-container">
+                    <input type="text" placeholder="Поиск статей и материалов...">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </div>
+                
+                <nav>
+                    <ul>
+                        <li><a href="#" class="active" onclick="showPage('home')">Главная</a></li>
+                        <li><a href="#" onclick="showPage('articles')">Статьи</a></li>
+                        <li><a href="#" onclick="showPage('about')">О проекте</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Главная страница -->
+    <div id="home-page" class="page">
+        <section class="hero">
+            <div class="container">
+                <h1>Психология — это наука</h1>
+                <p>В море информации о ментальном здоровье тех сложно отделить факты от важности. Одни советуют мыслить правильно, другие обещают хранить все проблемы за один сеанс, третьи и вовсе утверждают, что депрессия не существует.</p>
+            </div>
+        </section>
+
+        <section class="container">
+            <h2 class="section-title">Наша цель — ясность и доказательства</h2>
+            
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>Практично</h3>
+                    <p>Мы собрали и простым языком объяснили научно обоснованные методы и концепции психологии. Здесь вы не найдете непроверенных теорий или шарлатанства. Только факты, подкрепленные исследованиями.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-comments"></i>
+                    <h3>Понятно</h3>
+                    <p>Основные сложные концепции простыми понятным языком</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-flask"></i>
+                    <h3>Научно</h3>
+                    <p>Основное из клинических исследований и математики</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-tasks"></i>
+                    <h3>Практично</h3>
+                    <p>Даем конкретные методы, которые действительно работают</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="container topics">
+            <h2 class="section-title">Популярные темы для изучения</h2>
+            
+            <div class="topics-grid">
+                <div class="topic-card">
+                    <div class="topic-image">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="topic-content">
+                        <span class="topic-tag">Книга</span>
+                        <h3>Доказательная психология.</h3>
+                        <p> Одним из важнейших принципов отбора для публикации в нашем журнале рукописей статьёй</p>
+                        <a href="#" class="btn">Подробнее</a>
+                    </div>
+                </div>
+                
+                <div class="topic-card">
+                    <div class="topic-image">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="topic-content">
+                        <span class="topic-tag">Книга</span>
+                        <h3>Доказательная психология.</h3>
+                        <p> Одним из важнейших принципов отбора для публикации в нашем журнале рукописей статьёй</p>
+                        <a href="#" class="btn">Подробнее</a>
+                    </div>
+                </div>
+                
+                <div class="topic-card">
+                    <div class="topic-image">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="topic-content">
+                        <span class="topic-tag">Книга</span>
+                        <h3>Доказательная психология.</h3>
+                        <p> Одним из важнейших принципов отбора для публикации в нашем журнале рукописей статьёй</p>
+                        <a href="#" class="btn">Подробнее</a>
+                    </div>
+                </div>
+                
+                <div class="topic-card">
+                    <div class="topic-image">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="topic-content">
+                        <span class="topic-tag">Книга</span>
+                        <h3>Доказательная психология.</h3>
+                        <p> Одним из важнейших принципов отбора для публикации в нашем журнале рукописей статьёй</p>
+                        <a href="#" class="btn">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="research">
+                <h2>Исследование месяца</h2>
+                <div class="research-content">
+                    
+                        Одним из важнейших принципов отбора для публикации в нашем журнале рукописей статей,
+                        представляющих новые психолого-педагогические технологии, является применение авторами принципов доказательного подхода к обоснованию их эффективности. Сегодня идеи доказательного подхода в психолого-педагогической практике приобретают все более широкое распространение, что нашло выражение, в частности, в опубликованном в июне 2023 г. Перечне критериев доказательности диссертационных исследований в сфере наук об образовании, подготовленном
+                        специалистами Российской академии образования и экспертным советом ВАК при Минобрнауки
+                        России по педагогике и психологии. Вместе с тем рост информированности профессионального
+                        сообщества о доказательном подходе в психолого-педагогической практике порождает активные
+                        дискуссии о его возможностях и ограничениях. Анализируя комментарии авторов, читателей
+                        и рецензентов, посту
+                    
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Страница статей -->
+    <div id="articles-page" class="page" style="display: none;">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="#" onclick="showPage('home')">Главная</a> > Статьи
+            </div>
+            
+            <h1 class="page-title">Статьи по психологии</h1>
+            <p class="page-subtitle">Научный подход к ментальному здоровью</p>
+            
+            <div class="articles-grid" id="articles-container">
+                <!-- Статьи будут добавляться динамически -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Страница "О проекте" -->
+    <div id="about-page" class="page" style="display: none;">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="#" onclick="showPage('home')">Главная</a> > О проекте
+            </div>
+            
+            <h1 class="page-title">О проекте</h1>
+            
+            <div class="about-content">
+                <h2>Наша миссия</h2>
+                <p>Мы создали этот проект, чтобы предоставить доступную и научно обоснованную информацию о психологии и ментальном здоровье. В современном мире, переполненном противоречивыми советами и псевдонаучными теориями, важно иметь надежный источник информации.</p>
+                
+                <p>Наша команда состоит из профессиональных психологов, исследователей и научных журналистов, которые тщательно отбирают и проверяют всю публикуемую информацию.</p>
+                
+                <h2>Наши принципы</h2>
+                <ul>
+                    <li>Опираться только на доказательные исследования</li>
+                    <li>Предоставлять информацию в доступной форме</li>
+                    <li>Уважать приватность и достоинство читателей</li>
+                    <li>Не давать медицинских рекомендаций без консультации специалиста</li>
+                </ul>
+                
+                <h2>Наша команда</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Анна Петрова">
+                        <h3>Анна Петрова</h3>
+                        <p>Клинический психолог, PhD</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Иван Сидоров">
+                        <h3>Иван Сидоров</h3>
+                        <p>Научный журналист</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Мария Козлова">
+                        <h3>Мария Козлова</h3>
+                        <p>Психотерапевт, когнитивно-поведенческий подход</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Админ-панель -->
+    <div class="admin-toggle" onclick="toggleAdminPanel()">
+        <i class="fas fa-cog"></i>
+    </div>
+    
+    <div class="container">
+        <div class="admin-panel" id="admin-panel">
+            <h2>Админ-панель</h2>
+            
+            <div class="admin-form">
+                <h3>Добавить новую статью</h3>
+                <div class="form-group">
+                    <label for="article-title">Заголовок статьи</label>
+                    <input type="text" id="article-title" placeholder="Введите заголовок">
+                </div>
+                <div class="form-group">
+                    <label for="article-category">Категория</label>
+                    <select id="article-category">
+                        <option value="Психоанализ">Психоанализ</option>
+                        <option value="КПТ">Когнитивно-поведенческая терапия</option>
+                        <option value="Нейропсихология">Нейропсихология</option>
+                        <option value="Общая психология">Общая психология</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="article-excerpt">Краткое описание</label>
+                    <textarea id="article-excerpt" placeholder="Введите краткое описание статьи"></textarea>
+                </div>
+                <button class="btn" onclick="addArticle()">Добавить статью</button>
+            </div>
+            
+            <div class="admin-articles">
+                <h3>Управление статьями</h3>
+                <ul class="articles-list" id="admin-articles-list">
+                    <!-- Список статей для администрирования -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">Психология</div>
+                    <p>Научный подход к ментальному здоровью</p>
+                </div>
+                
+                <ul class="footer-links">
+                    <li><a href="#" onclick="showPage('home')">Главная</a></li>
+                    <li><a href="#" onclick="showPage('articles')">Статьи</a></li>
+                    <li><a href="#" onclick="showPage('about')">О проекте</a></li>
+                    <li><a href="#">Контакты</a></li>
+                </ul>
+                
+                <ul class="social-links">
+                    <li><a href="#"><i class="fab fa-vk"></i></a></li>
+                    <li><a href="#"><i class="fab fa-telegram"></i></a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                </ul>
+            </div>
+            <div class="copyright">
+                © 2023 Психология - доказательный подход. Все права защищены.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Данные статей
+        let articles = [
+            {
+                id: 1,
+                title: "Психоанализ: доказательная психосоматика",
+                category: "Психоанализ",
+                excerpt: "Исследование эффективности психоанализа в сравнении с КПТ при терапии личностных расстройств.",
+                date: "15 мая 2023"
+            },
+            {
+                id: 2,
+                title: "Когнитивно-поведенческая терапия: научный подход",
+                category: "КПТ",
+                excerpt: "Как КПТ помогает изменить негативные мыслительные паттерны и улучшить качество жизни.",
+                date: "22 апреля 2023"
+            },
+            {
+                id: 3,
+                title: "Нейропластичность мозга: как мы меняемся",
+                category: "Нейропсихология",
+                excerpt: "Современные исследования способности мозга изменяться и адаптироваться на протяжении всей жизни.",
+                date: "10 марта 2023"
+            }
+        ];
+
+        // Показать/скрыть админ-панель
+        function toggleAdminPanel() {
+            const adminPanel = document.getElementById('admin-panel');
+            adminPanel.style.display = adminPanel.style.display === 'block' ? 'none' : 'block';
+            updateAdminArticlesList();
+        }
+
+        // Показать определенную страницу
+        function showPage(pageId) {
+            // Скрыть все страницы
+            document.querySelectorAll('.page').forEach(page => {
+                page.style.display = 'none';
+            });
+            
+            // Показать выбранную страницу
+            document.getElementById(`${pageId}-page`).style.display = 'block';
+            
+            // Обновить активную ссылку в навигации
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Если открывается страница статей, обновить список
+            if (pageId === 'articles') {
+                displayArticles();
+            }
+        }
+
+        // Отображение статей на странице
+        function displayArticles() {
+            const container = document.getElementById('articles-container');
+            container.innerHTML = '';
+            
+            articles.forEach(article => {
+                const articleCard = document.createElement('div');
+                articleCard.className = 'article-card';
+                articleCard.innerHTML = `
+                    <div class="article-image">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="article-content">
+                        <h3>${article.title}</h3>
+                        <div class="article-meta">
+                            <span>${article.category}</span>
+                            <span>${article.date}</span>
+                        </div>
+                        <p class="article-excerpt">${article.excerpt}</p>
+                        <a href="#" class="btn">Читать статью</a>
+                    </div>
+                `;
+                container.appendChild(articleCard);
+            });
+        }
+
+        // Добавление новой статьи
+        function addArticle() {
+            const title = document.getElementById('article-title').value;
+            const category = document.getElementById('article-category').value;
+            const excerpt = document.getElementById('article-excerpt').value;
+            
+            if (title && category && excerpt) {
+                const newArticle = {
+                    id: articles.length + 1,
+                    title: title,
+                    category: category,
+                    excerpt: excerpt,
+                    date: new Date().toLocaleDateString('ru-RU')
+                };
+                
+                articles.push(newArticle);
+                
+                // Очистить форму
+                document.getElementById('article-title').value = '';
+                document.getElementById('article-excerpt').value = '';
+                
+                // Обновить списки
+                updateAdminArticlesList();
+                if (document.getElementById('articles-page').style.display !== 'none') {
+                    displayArticles();
+                }
+                
+                alert('Статья успешно добавлена!');
+            } else {
+                alert('Пожалуйста, заполните все поля!');
+            }
+        }
+
+        // Удаление статьи
+        function deleteArticle(id) {
+            if (confirm('Вы уверены, что хотите удалить эту статью?')) {
+                articles = articles.filter(article => article.id !== id);
+                updateAdminArticlesList();
+                if (document.getElementById('articles-page').style.display !== 'none') {
+                    displayArticles();
+                }
+            }
+        }
+
+        // Обновление списка статей в админ-панели
+        function updateAdminArticlesList() {
+            const list = document.getElementById('admin-articles-list');
+            list.innerHTML = '';
+            
+            articles.forEach(article => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `
+                    <div>
+                        <strong>${article.title}</strong>
+                        <div>${article.category} | ${article.date}</div>
+                    </div>
+                    <div class="article-actions">
+                        <button class="btn btn-danger" onclick="deleteArticle(${article.id})">Удалить</button>
+                    </div>
+                `;
+                list.appendChild(listItem);
+            });
+        }
+
+        // Инициализация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            displayArticles();
+        });
+    </script>
+</body>
+</html>
