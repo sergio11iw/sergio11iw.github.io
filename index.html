@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Психология - это наука</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="IMG_1862.PNG">
     <style>
         * {
             margin: 0;
@@ -244,6 +245,15 @@
             color: white;
         }
         
+        .btn-back {
+            background-color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+        
+        .btn-back:hover {
+            background-color: #6c7b7d;
+        }
+        
         /* Стили для страницы статей */
         .articles-grid {
             display: grid;
@@ -313,6 +323,91 @@
             padding: 4px 8px;
             border-radius: 15px;
             font-size: 12px;
+        }
+        
+        /* Стили для отдельной статьи */
+        .article-page {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+        
+        .article-header {
+            margin-bottom: 30px;
+            border-bottom: 2px solid #f1f1f1;
+            padding-bottom: 20px;
+        }
+        
+        .article-title {
+            font-size: 36px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .article-meta-large {
+            display: flex;
+            justify-content: space-between;
+            font-size: 16px;
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+        
+        .article-tags-large {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .article-tag-large {
+            background: #e8f4fd;
+            color: #3498db;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+        
+        .article-content-full {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #444;
+        }
+        
+        .article-content-full p {
+            margin-bottom: 20px;
+        }
+        
+        .article-content-full h2 {
+            margin: 30px 0 20px;
+            color: #2c3e50;
+        }
+        
+        .article-content-full h3 {
+            margin: 25px 0 15px;
+            color: #2c3e50;
+        }
+        
+        .highlight-box {
+            background: #e8f4fd;
+            border-left: 4px solid #3498db;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .article-image-large {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 60px;
+            margin: 30px 0;
+            border-radius: 10px;
         }
         
         /* Стили для страницы "О проекте" */
@@ -498,6 +593,10 @@
             .filter-group {
                 min-width: 100%;
             }
+            
+            .article-title {
+                font-size: 28px;
+            }
         }
         
         @media (max-width: 768px) {
@@ -530,6 +629,14 @@
             
             .logo-image {
                 height: 40px;
+            }
+            
+            .article-page {
+                padding: 20px;
+            }
+            
+            .article-image-large {
+                height: 250px;
             }
         }
     </style>
@@ -652,6 +759,17 @@
         </div>
     </div>
 
+    <!-- Страница отдельной статьи -->
+    <div id="article-page" class="page" style="display: none;">
+        <div class="container">
+            <button class="btn btn-back" onclick="showPage('articles')">← Вернуться к статьям</button>
+            
+            <div class="article-page" id="article-content-container">
+                <!-- Контент статьи будет добавляться динамически -->
+            </div>
+        </div>
+    </div>
+
     <!-- Страница "О проекте" -->
     <div id="about-page" class="page" style="display: none;">
         <div class="container">
@@ -729,13 +847,36 @@
         let articles = [
             {
                 id: 1,
-                title: "Психоанализ: доказательная психосоматика",
+                title: "Парадокс выбора: как избыточное количество альтернатив влияет на психоэмоциональное состояние ",
                 category: "psychoanalysis",
                 author: "anna",
-                authorName: "Анна Петрова",
+                authorName: "Коннова Ольга",
                 excerpt: "Исследование эффективности психоанализа в сравнении с КПТ при терапии личностных расстройств. Мета-анализ 2017 года показывает сравнимую эффективность методов.",
                 date: "15 мая 2023",
-                tags: ["Психоанализ", "Исследование", "Доказательная медицина"]
+                tags: ["Психоанализ", "Исследование", "Доказательная медицина"],
+                fullContent: `
+                    <div class="article-image-large">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    
+                    <p>Сейчас все диванные скептики наверняка схватились за сердце, ведь какое еще направление может заслуживать первое место в нашем списке как не психоанализ с его абсолютно безумными теоретическими построениями в стиле оральных стадий развития, депрессивных позиций и эдиповых комплексов.</p>
+                    
+                    <p>Однако, как оказалось, психоанализ, а в частности его краткосрочные ответвления считаются вполне себе доказательными методами. Так, например, в 2003 году в American Journal of Psychiatry был опубликован мета-анализ, в котором сравнивалась психоанализ и КПТ при терапии личностных расстройств.</p>
+                    
+                    <div class="highlight-box">
+                        <p>Оказалось, что оба практики одинаково высокоэффективны (для ПА значение = 1,46, для КПТ = 1,0). В 2017 данный результат повторился.</p>
+                    </div>
+                    
+                    <h2>Краткосрочные методы психоанализа</h2>
+                    
+                    <p>Также существует огромное количество подтверждений в пользу эффективности отдельных краткосрочных методов психоанализа, типа терапии, ориентированной на перенос, терапии основанной на ментализации, интенсивной терапии Хабиба Давану и т.д.</p>
+                    
+                    <p>При этом, лечение психоанализом сегодня страхуется во многих странах также как и в КПТ, например, в Германии.</p>
+                    
+                    <h2>Доказательный подход</h2>
+                    
+                    <p>Именно поэтому в обиход ввели понятие evidence-based или доказательный метод, вместо science-based или научный метод. Потому что ни одна психотерапия не отвечает научным критериям исследования, ведь исследования здесь опираются на корреляции, а не на причинно-следственные взаимосвязи.</p>
+                `
             },
             {
                 id: 2,
@@ -745,7 +886,28 @@
                 authorName: "Иван Сидоров",
                 excerpt: "Как КПТ помогает изменить негативные мыслительные паттерны и улучшить качество жизни. Практические техники и кейсы.",
                 date: "22 апреля 2023",
-                tags: ["КПТ", "Терапия", "Практика"]
+                tags: ["КПТ", "Терапия", "Практика"],
+                fullContent: `
+                    <div class="article-image-large">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    
+                    <p>Когнитивно-поведенческая терапия (КПТ) — это научно обоснованный подход к психотерапии, который помогает людям изменить негативные мыслительные паттерны и поведенческие привычки, которые вызывают эмоциональные проблемы.</p>
+                    
+                    <h2>Основные принципы КПТ</h2>
+                    
+                    <p>КПТ основана на идее, что наши мысли, чувства и поведение взаимосвязаны. Изменяя один компонент этой триады, мы можем повлиять на другие.</p>
+                    
+                    <div class="highlight-box">
+                        <p>КПТ обычно фокусируется на решении текущих проблем и изменении когнитивных искажений и деструктивных моделей поведения.</p>
+                    </div>
+                    
+                    <h2>Эффективность КПТ</h2>
+                    
+                    <p>Многочисленные исследования подтвердили эффективность КПТ при лечении различных расстройств, включая депрессию, тревожные расстройства, панические атаки, обсессивно-компульсивное расстройство и посттравматическое стрессовое расстройство.</p>
+                    
+                    <p>КПТ часто считается "золотым стандартом" психотерапии благодаря своей доказанной эффективности и структурированному подходу.</p>
+                `
             },
             {
                 id: 3,
@@ -755,60 +917,85 @@
                 authorName: "Мария Козлова",
                 excerpt: "Современные исследования способности мозга изменяться и адаптироваться на протяжении всей жизни. Нейробиологические основы.",
                 date: "10 марта 2023",
-                tags: ["Нейропсихология", "Мозг", "Исследование"]
-            },
-            {
-                id: 4,
-                title: "Депрессия: мифы и реальность",
-                category: "clinical",
-                author: "alex",
-                authorName: "Алексей Волков",
-                excerpt: "Разбираем распространенные мифы о депрессии и представляем научно обоснованные данные о природе этого расстройства.",
-                date: "28 февраля 2023",
-                tags: ["Клиническая психология", "Депрессия", "Мифы"]
-            },
-            {
-                id: 5,
-                title: "Развитие эмоционального интеллекта у детей",
-                category: "developmental",
-                author: "anna",
-                authorName: "Анна Петрова",
-                excerpt: "Практические рекомендации по развитию эмоционального интеллекта у детей дошкольного и школьного возраста.",
-                date: "15 января 2023",
-                tags: ["Развитие", "Дети", "Эмоции"]
-            },
-            {
-                id: 6,
-                title: "Тревожные расстройства: современные подходы",
-                category: "clinical",
-                author: "maria",
-                authorName: "Мария Козлова",
-                excerpt: "Обзор современных методов диагностики и терапии тревожных расстройств. Когнитивно-поведенческий и интегративный подходы.",
-                date: "5 декабря 2022",
-                tags: ["Тревожность", "Терапия", "КПТ"]
+                tags: ["Нейропсихология", "Мозг", "Исследование"],
+                fullContent: `
+                    <div class="article-image-large">
+                        <i class="fas fa-head-side-brain"></i>
+                    </div>
+                    
+                    <p>Нейропластичность — это способность мозга изменяться и адаптироваться в ответ на опыт, обучение и травму. Это революционное открытие изменило наше понимание возможностей мозга на протяжении всей жизни.</p>
+                    
+                    <h2>Типы нейропластичности</h2>
+                    
+                    <p>Существует несколько типов нейропластичности:</p>
+                    
+                    <ul>
+                        <li><strong>Синаптическая пластичность:</strong> Изменение силы связей между нейронами</li>
+                        <li><strong>Структурная пластичность:</strong> Изменение физической структуры мозга</li>
+                        <li><strong>Функциональная пластичность:</strong> Перераспределение функций между различными областями мозга</li>
+                    </ul>
+                    
+                    <div class="highlight-box">
+                        <p>Исследования показывают, что мозг способен создавать новые нейронные связи и даже генерировать новые нейроны в определенных областях на протяжении всей жизни.</p>
+                    </div>
+                    
+                    <h2>Практическое применение</h2>
+                    
+                    <p>Понимание нейропластичности имеет важные последствия для реабилитации после травм мозга, лечения психических расстройств и даже для образовательных методик.</p>
+                `
             }
         ];
 
         // Показать определенную страницу
-        function showPage(pageId) {
+        function showPage(pageId, articleId = null) {
             // Скрыть все страницы
             document.querySelectorAll('.page').forEach(page => {
                 page.style.display = 'none';
             });
             
             // Показать выбранную страницу
-            document.getElementById(`${pageId}-page`).style.display = 'block';
+            const pageElement = document.getElementById(`${pageId}-page`);
+            if (pageElement) {
+                pageElement.style.display = 'block';
+            }
             
             // Обновить активную ссылку в навигации
             document.querySelectorAll('nav a').forEach(link => {
                 link.classList.remove('active');
             });
-            event.target.classList.add('active');
+            
+            // Если открывается страница статьи, найти статью по ID
+            if (pageId === 'article' && articleId !== null) {
+                showArticle(articleId);
+            }
             
             // Если открывается страница статей, обновить список
             if (pageId === 'articles') {
                 displayArticles();
             }
+        }
+
+        // Показать страницу со статьей
+        function showArticle(articleId) {
+            const article = articles.find(a => a.id === articleId);
+            if (!article) return;
+            
+            const container = document.getElementById('article-content-container');
+            container.innerHTML = `
+                <div class="article-header">
+                    <h1 class="article-title">${article.title}</h1>
+                    <div class="article-meta-large">
+                        <span><strong>Автор:</strong> ${article.authorName}</span>
+                        <span><strong>Дата:</strong> ${article.date}</span>
+                    </div>
+                    <div class="article-tags-large">
+                        ${article.tags.map(tag => `<span class="article-tag-large">${tag}</span>`).join('')}
+                    </div>
+                </div>
+                <div class="article-content-full">
+                    ${article.fullContent}
+                </div>
+            `;
         }
 
         // Отображение статей на странице
@@ -840,7 +1027,7 @@
                             ${article.tags.map(tag => `<span class="article-tag">${tag}</span>`).join('')}
                         </div>
                         <p class="article-excerpt">${article.excerpt}</p>
-                        <a href="#" class="btn">Читать статью</a>
+                        <button class="btn" onclick="showPage('article', ${article.id})">Читать статью</button>
                     </div>
                 `;
                 container.appendChild(articleCard);
